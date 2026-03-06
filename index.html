@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SoundRate - Perfil</title>
-    <meta name="description" content="Tu perfil en SoundRate" />
+    <title>SoundRate - Alex Morgan</title>
+    <meta name="description" content="Perfil de usuario en SoundRate" />
 
-    <!-- PWA Manifest -->
+    <!-- PWA -->
     <link
       rel="manifest"
       href="data:application/manifest+json,{
@@ -17,8 +17,8 @@
     'background_color': '#000000',
     'theme_color': '#1db954',
     'icons': [
-      {'src': 'https://via.placeholder.com/192?text=SR', 'sizes': '192x192', 'type': 'image/png'},
-      {'src': 'https://via.placeholder.com/512?text=SR', 'sizes': '512x512', 'type': 'image/png'}
+      {'src':'https://via.placeholder.com/192?text=SR','sizes':'192x192','type':'image/png'},
+      {'src':'https://via.placeholder.com/512?text=SR','sizes':'512x512','type':'image/png'}
     ]
   }"
     />
@@ -35,9 +35,7 @@
         --text: #ffffff;
         --text-secondary: #b3b3b3;
         --border: #282828;
-        --spotify: #1db954;
-        --apple: #fb5c44;
-        --soundcloud: #ff5500;
+        --accent: #1db954;
       }
 
       * {
@@ -45,14 +43,13 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family:
           -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background: var(--bg);
         color: var(--text);
         min-height: 100vh;
-        padding: 0 16px;
+        line-height: 1.5;
       }
 
       header {
@@ -60,7 +57,7 @@
         padding: 12px 16px;
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 100;
         border-bottom: 1px solid var(--border);
         display: flex;
         justify-content: space-between;
@@ -68,8 +65,9 @@
       }
 
       .logo {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         font-weight: bold;
+        color: var(--accent);
       }
 
       .nav {
@@ -77,15 +75,13 @@
         gap: 28px;
         font-weight: 600;
       }
-
       .nav span {
         cursor: pointer;
-      }
-
-      .nav .active {
-        color: white;
-        border-bottom: 2px solid var(--spotify);
         padding-bottom: 4px;
+      }
+      .nav .active {
+        border-bottom: 2px solid var(--accent);
+        color: white;
       }
 
       .icons {
@@ -94,21 +90,48 @@
         font-size: 1.3rem;
       }
 
+      .tabs {
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        justify-content: center;
+        padding: 12px 0;
+      }
+      .tab {
+        padding: 10px 28px;
+        font-weight: 600;
+        cursor: pointer;
+        color: var(--text-secondary);
+        transition: all 0.2s;
+      }
+      .tab.active {
+        color: white;
+        border-bottom: 3px solid var(--accent);
+      }
+
+      .tab-content {
+        display: none;
+        padding: 20px;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
       .profile {
         text-align: center;
         padding: 40px 0 50px;
       }
-
       .avatar {
         width: 140px;
         height: 140px;
+        margin: 0 auto 20px;
         border-radius: 50%;
         overflow: hidden;
-        margin: 0 auto 20px;
         border: 4px solid var(--surface);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
       }
-
       .avatar img {
         width: 100%;
         height: 100%;
@@ -120,18 +143,15 @@
         font-weight: bold;
         margin-bottom: 8px;
       }
-
       .handle {
         color: var(--text-secondary);
         font-size: 1.2rem;
         margin-bottom: 20px;
       }
-
       .bio {
         max-width: 620px;
         margin: 0 auto 28px;
         color: var(--text-secondary);
-        line-height: 1.6;
         font-size: 1.05rem;
       }
 
@@ -140,54 +160,36 @@
         justify-content: center;
         gap: 14px;
         flex-wrap: wrap;
-        margin-bottom: 40px;
       }
-
       .btn-platform {
         padding: 10px 24px;
-        border-radius: 50px;
-        font-weight: bold;
+        border-radius: 999px;
+        font-weight: 700;
         font-size: 0.95rem;
         border: none;
         cursor: pointer;
-        transition:
-          transform 0.15s,
-          opacity 0.15s;
       }
-
-      .btn-platform:hover {
-        transform: translateY(-2px);
-        opacity: 0.92;
-      }
-
-      .spotify {
-        background: var(--spotify);
+      .btn-spotify {
+        background: var(--accent);
         color: black;
       }
-      .apple {
-        background: var(--apple);
+      .btn-apple {
+        background: #fb5c44;
         color: white;
       }
-      .soundcloud {
-        background: var(--soundcloud);
+      .btn-sc {
+        background: #ff5500;
         color: white;
-      }
-
-      section {
-        padding: 40px 0;
-        max-width: 1100px;
-        margin: 0 auto;
       }
 
       h2 {
-        font-size: 1.9rem;
-        margin-bottom: 12px;
+        font-size: 2rem;
+        margin: 40px 0 12px;
         font-weight: bold;
       }
-
       h3 {
         color: var(--text-secondary);
-        font-size: 1.15rem;
+        font-size: 1.1rem;
         margin-bottom: 28px;
       }
 
@@ -196,88 +198,128 @@
         grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
         gap: 24px;
       }
-
       .album {
         text-align: center;
       }
-
       .album-cover {
         width: 100%;
-        aspect-ratio: 1 / 1;
+        aspect-ratio: 1/1;
         border-radius: 12px;
         overflow: hidden;
         margin-bottom: 12px;
         background: #222;
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
       }
-
       .album-cover img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-
       .album-title {
         font-weight: 600;
-        font-size: 1.05rem;
         margin-bottom: 4px;
       }
-
       .album-artist {
         color: var(--text-secondary);
         font-size: 0.92rem;
       }
 
-      .review {
+      .review-card {
         background: var(--card);
         border-radius: 12px;
         padding: 24px;
         border: 1px solid var(--border);
         margin-bottom: 24px;
       }
-
       .review-header {
         display: flex;
         align-items: center;
         gap: 20px;
         margin-bottom: 20px;
       }
-
       .review-cover {
         width: 90px;
         height: 90px;
         border-radius: 8px;
         overflow: hidden;
-        background: #222;
       }
-
       .review-cover img {
         width: 100%;
         height: 100%;
         object-fit: cover;
       }
-
-      .review-title {
-        font-size: 1.35rem;
+      .review-info h4 {
+        font-size: 1.3rem;
         margin-bottom: 6px;
       }
-
       .stars {
         color: #ffd700;
         font-size: 1.4rem;
-        margin: 6px 0;
+        margin: 4px 0;
       }
-
       .review-text {
-        line-height: 1.65;
         color: #e0e0e0;
-        font-size: 1.05rem;
+        line-height: 1.6;
       }
-
-      .review-meta {
+      .review-date {
+        margin-top: 16px;
         color: var(--text-secondary);
         font-size: 0.95rem;
+      }
+
+      /* Chatbot */
+      #chat-area {
+        background: var(--card);
+        border-radius: 12px;
+        padding: 20px;
+        min-height: 400px;
+        display: flex;
+        flex-direction: column;
+      }
+      #chat-messages {
+        flex: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #0a0a0a;
+        border-radius: 8px;
+      }
+      .msg {
+        margin: 10px 0;
+        padding: 10px 14px;
+        border-radius: 14px;
+        max-width: 85%;
+      }
+      .msg-bot {
+        background: #282828;
+        align-self: flex-start;
+      }
+      .msg-user {
+        background: var(--accent);
+        color: black;
+        align-self: flex-end;
+        text-align: right;
+      }
+
+      .quick-questions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
         margin-top: 16px;
+      }
+      .quick-btn {
+        padding: 10px 18px;
+        background: #282828;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        color: white;
+        cursor: pointer;
+        font-size: 0.95rem;
+        transition: all 0.2s;
+      }
+      .quick-btn:hover {
+        background: #383838;
+        border-color: var(--accent);
       }
     </style>
   </head>
@@ -295,25 +337,31 @@
       </div>
     </header>
 
-    <main>
+    <div class="tabs">
+      <div class="tab active" data-tab="profile">Perfil</div>
+      <div class="tab" data-tab="reviews">Reviews</div>
+      <div class="tab" data-tab="chat">Soporte</div>
+    </div>
+
+    <div id="profile" class="tab-content active">
       <section class="profile">
         <div class="avatar">
           <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400"
-            alt="Usuario"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300"
+            alt="Alex Morgan"
           />
         </div>
-        <div class="name">Alex Morgan</div>
+        <h1 class="name">Alex Morgan</h1>
         <div class="handle">@alexbeats</div>
-        <div class="bio">
+        <p class="bio">
           Music enthusiast exploring sounds across genres. Jazz connoisseur,
           indie lover, and electronic music devotee. Always searching for that
           next perfect track.
-        </div>
+        </p>
         <div class="platforms">
-          <button class="btn-platform spotify">Spotify</button>
-          <button class="btn-platform apple">Apple Music</button>
-          <button class="btn-platform soundcloud">SoundCloud</button>
+          <button class="btn-platform btn-spotify">Spotify</button>
+          <button class="btn-platform btn-apple">Apple Music</button>
+          <button class="btn-platform btn-sc">SoundCloud</button>
         </div>
       </section>
 
@@ -325,7 +373,7 @@
             <div class="album-cover">
               <img
                 src="https://images.unsplash.com/photo-1587223075055-82e9a937ddff?w=400"
-                alt="Kind of Blue"
+                alt=""
               />
             </div>
             <div class="album-title">Kind of Blue</div>
@@ -335,7 +383,7 @@
             <div class="album-cover">
               <img
                 src="https://images.unsplash.com/photo-1544194215-28d0c4a92a7e?w=400"
-                alt="Dark Side"
+                alt=""
               />
             </div>
             <div class="album-title">Dark Side of the Moon</div>
@@ -345,70 +393,197 @@
             <div class="album-cover">
               <img
                 src="https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=400"
-                alt="Discovery"
+                alt=""
               />
             </div>
             <div class="album-title">Discovery</div>
             <div class="album-artist">Daft Punk • 2001</div>
           </div>
-          <div class="album">
-            <div class="album-cover">
-              <img
-                src="https://images.unsplash.com/photo-1605721911519-c9a15cb64f76?w=400"
-                alt="To Pimp"
-              />
-            </div>
-            <div class="album-title">To Pimp a Butterfly</div>
-            <div class="album-artist">Kendrick Lamar • 2015</div>
-          </div>
-          <div class="album">
-            <div class="album-cover">
-              <img
-                src="https://images.unsplash.com/photo-1611605698323-b1e99cfd37ea?w=400"
-                alt="Aeroplane"
-              />
-            </div>
-            <div class="album-title">In the Aeroplane Over the Sea</div>
-            <div class="album-artist">Neutral Milk Hotel • 1998</div>
-          </div>
-          <div class="album">
-            <div class="album-cover">
-              <img
-                src="https://images.unsplash.com/photo-1580130718646-9f694209b207?w=400"
-                alt="Abbey Road"
-              />
-            </div>
-            <div class="album-title">Abbey Road</div>
-            <div class="album-artist">The Beatles • 1969</div>
-          </div>
         </div>
       </section>
+    </div>
 
+    <div id="reviews" class="tab-content">
       <section>
         <h2>Recent Reviews</h2>
-        <div class="review">
+        <div class="review-card">
           <div class="review-header">
             <div class="review-cover">
               <img
                 src="https://images.unsplash.com/photo-1587223075055-82e9a937ddff?w=400"
-                alt="Kind of Blue"
+                alt=""
               />
             </div>
             <div>
-              <div class="review-title">Kind of Blue</div>
+              <h4>Kind of Blue</h4>
               <div class="stars">★★★★★</div>
               <div>Miles Davis • 1959</div>
             </div>
           </div>
-          <div class="review-text">
+          <p class="review-text">
             A timeless masterpiece that defined cool jazz. Miles Davis's trumpet
             work is nothing short of revolutionary. Every track flows seamlessly
             into the next, creating an atmosphere that's both sophisticated and
             deeply emotional.
-          </div>
-          <div class="review-meta">Reviewed on February 1, 2026</div>
+          </p>
+          <div class="review-date">Reviewed on February 1, 2026</div>
         </div>
       </section>
-    </main>
+    </div>
+
+    <div id="chat" class="tab-content">
+      <div id="chat-area">
+        <div id="chat-messages">
+          <div class="msg msg-bot">
+            ¡Hola! Soy el soporte técnico de SoundRate.<br />¿En qué te puedo
+            ayudar hoy?
+          </div>
+        </div>
+
+        <div class="quick-questions" id="quick-questions">
+          <button class="quick-btn" data-q="login">
+            No puedo iniciar sesión o olvidé mi contraseña
+          </button>
+          <button class="quick-btn" data-q="carga">
+            La página no carga o se queda cargando
+          </button>
+          <button class="quick-btn" data-q="perfil">
+            Problemas con mi perfil (foto, nombre, email)
+          </button>
+          <button class="quick-btn" data-q="error">
+            Aparece un mensaje de error o algo no funciona
+          </button>
+          <button class="quick-btn" data-q="borrar-cuenta">
+            Quiero eliminar mi cuenta
+          </button>
+          <button class="quick-btn" data-q="sugerencia">
+            Tengo una sugerencia o quiero reportar un bug
+          </button>
+          <button class="quick-btn" data-q="otro">
+            Otro problema / consulta
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Cambio de pestañas
+      const tabs = document.querySelectorAll(".tab");
+      const contents = document.querySelectorAll(".tab-content");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          tabs.forEach((t) => t.classList.remove("active"));
+          contents.forEach((c) => c.classList.remove("active"));
+          tab.classList.add("active");
+          document.getElementById(tab.dataset.tab).classList.add("active");
+        });
+      });
+
+      // Chatbot con corrección para "otro"
+      const messagesDiv = document.getElementById("chat-messages");
+      const quickContainer = document.getElementById("quick-questions");
+
+      function addMessage(text, isUser = false) {
+        const msg = document.createElement("div");
+        msg.className = `msg ${isUser ? "msg-user" : "msg-bot"}`;
+        msg.textContent = text;
+        messagesDiv.appendChild(msg);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      function showOptions(html) {
+        quickContainer.innerHTML = html;
+        document.querySelectorAll(".quick-btn").forEach((btn) => {
+          btn.addEventListener("click", handleClick);
+        });
+      }
+
+      function handleClick(e) {
+        const btn = e.target;
+        const pregunta = btn.textContent.trim();
+        const key = btn.dataset.q;
+
+        addMessage(pregunta, true);
+
+        let respuesta = "";
+        let siguientes = "";
+
+        // Respuestas específicas para cada opción
+        if (key === "login") {
+          respuesta =
+            "Prueba restablecer tu contraseña desde 'Olvidé mi contraseña' en la pantalla de login. Si no llega el correo, revisa spam o promoción.";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        } else if (key === "carga") {
+          respuesta =
+            "Intenta refrescar la página (F5), borrar caché del navegador o probar en modo incógnito. ¿Sucede en móvil o computadora?";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        } else if (key === "perfil") {
+          respuesta =
+            "Ve a la sección de perfil → Editar. Si no guarda, intenta desde otro navegador o dispositivo.";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        } else if (key === "error") {
+          respuesta =
+            "Por favor describe el mensaje de error exacto que ves y en qué momento ocurre (al cargar, al hacer clic en algo, etc.).";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        } else if (key === "borrar-cuenta") {
+          respuesta =
+            "Para eliminar tu cuenta ve a Configuración → Cuenta → Eliminar cuenta. El proceso es permanente tras confirmar.";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        } else if (key === "sugerencia") {
+          respuesta =
+            "¡Gracias por tu idea! Cuéntanos qué te gustaría mejorar o qué bug encontraste y lo pasaremos al equipo.";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        }
+        // Corrección clave: "otro" y "volver" siempre regresan al menú completo
+        else if (key === "otro" || key === "volver") {
+          respuesta =
+            key === "otro"
+              ? "Entendido. ¿Puedes decirme más sobre el problema o consulta que tienes?"
+              : "¿En qué más te puedo ayudar?";
+
+          siguientes = `
+          <button class="quick-btn" data-q="login">No puedo iniciar sesión o olvidé mi contraseña</button>
+          <button class="quick-btn" data-q="carga">La página no carga o se queda cargando</button>
+          <button class="quick-btn" data-q="perfil">Problemas con mi perfil (foto, nombre, email)</button>
+          <button class="quick-btn" data-q="error">Aparece un mensaje de error o algo no funciona</button>
+          <button class="quick-btn" data-q="borrar-cuenta">Quiero eliminar mi cuenta</button>
+          <button class="quick-btn" data-q="sugerencia">Tengo una sugerencia o quiero reportar un bug</button>
+          <button class="quick-btn" data-q="otro">Otro problema / consulta</button>
+        `;
+        }
+
+        // Respuesta por defecto si algo falla
+        if (!respuesta) {
+          respuesta =
+            "Entendido, estamos revisando tu caso. ¿Puedes dar más detalles?";
+          siguientes = `<button class="quick-btn" data-q="volver">Volver al menú principal</button>`;
+        }
+
+        setTimeout(() => {
+          addMessage(respuesta);
+
+          // Mostrar siguientes opciones si existen
+          if (siguientes) {
+            setTimeout(() => showOptions(siguientes), 800);
+          }
+
+          // Mensaje de cierre siempre al final
+          setTimeout(
+            () => {
+              addMessage(
+                "Gracias por sus comentarios, lo contactaremos si es necesario.",
+              );
+            },
+            1400 + (siguientes ? 400 : 0),
+          );
+        }, 600);
+      }
+
+      // Iniciar eventos en los botones iniciales
+      document.querySelectorAll(".quick-btn").forEach((btn) => {
+        btn.addEventListener("click", handleClick);
+      });
+    </script>
   </body>
 </html>
