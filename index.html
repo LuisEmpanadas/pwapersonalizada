@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoundRate - Alex Morgan</title>
+    <meta name="description" content="Perfil de usuario en SoundRate" />
+
+    <!-- PWA -->
+    <link
+      rel="manifest"
+      href="data:application/manifest+json,{
+    'name': 'SoundRate',
+    'short_name': 'SoundRate',
+    'start_url': '.',
+    'display': 'standalone',
+    'background_color': '#000000',
+    'theme_color': '#1db954',
+    'icons': [
+      {'src':'https://via.placeholder.com/192?text=SR','sizes':'192x192','type':'image/png'},
+      {'src':'https://via.placeholder.com/512?text=SR','sizes':'512x512','type':'image/png'}
+    ]
+  }"
+    />
+    <link rel="apple-touch-icon" href="https://via.placeholder.com/180?text=SR" />
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+
+    <!-- ===== HEADER ===== -->
+    <header>
+      <div class="logo">SoundRate</div>
+      <div class="nav">
+        <span>Explore</span>
+        <span class="active">Lists</span>
+        <span>Reviews</span>
+      </div>
+      <div class="icons">
+        <span>🔍</span>
+        <span>🔔</span>
+      </div>
+    </header>
+
+    <!-- ===== NAVEGACIÓN DE PESTAÑAS ===== -->
+    <div class="tabs">
+      <div class="tab active" data-tab="profile">Perfil</div>
+      <div class="tab" data-tab="reviews">Reviews</div>
+      <div class="tab" data-tab="chat">Soporte</div>
+      <div class="tab" data-tab="payment">💳 Premium</div>
+    </div>
+
+    <!-- ===== PESTAÑA: PERFIL ===== -->
+    <div id="profile" class="tab-content active">
+      <section class="profile">
+        <div class="avatar">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300"
+            alt="Alex Morgan"
+          />
+        </div>
+        <h1 class="name">Alex Morgan</h1>
+        <div class="handle">@alexbeats</div>
+        <p class="bio">
+          Music enthusiast exploring sounds across genres. Jazz connoisseur,
+          indie lover, and electronic music devotee. Always searching for that
+          next perfect track.
+        </p>
+        <div class="platforms">
+          <button class="btn-platform btn-spotify">Spotify</button>
+          <button class="btn-platform btn-apple">Apple Music</button>
+          <button class="btn-platform btn-sc">SoundCloud</button>
+        </div>
+      </section>
+
+      <section>
+        <h2>Favorite Albums</h2>
+        <h3>My all-time favorite music that shaped my taste</h3>
+        <div class="albums-grid">
+          <div class="album">
+            <div class="album-cover">
+              <img src="https://images.unsplash.com/photo-1587223075055-82e9a937ddff?w=400" alt="Kind of Blue" />
+            </div>
+            <div class="album-title">Kind of Blue</div>
+            <div class="album-artist">Miles Davis • 1959</div>
+          </div>
+          <div class="album">
+            <div class="album-cover">
+              <img src="https://images.unsplash.com/photo-1544194215-28d0c4a92a7e?w=400" alt="Dark Side of the Moon" />
+            </div>
+            <div class="album-title">Dark Side of the Moon</div>
+            <div class="album-artist">Pink Floyd • 1973</div>
+          </div>
+          <div class="album">
+            <div class="album-cover">
+              <img src="https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=400" alt="Discovery" />
+            </div>
+            <div class="album-title">Discovery</div>
+            <div class="album-artist">Daft Punk • 2001</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== PESTAÑA: REVIEWS ===== -->
+    <div id="reviews" class="tab-content">
+      <section>
+        <h2>Recent Reviews</h2>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-cover">
+              <img src="https://images.unsplash.com/photo-1587223075055-82e9a937ddff?w=400" alt="Kind of Blue" />
+            </div>
+            <div class="review-info">
+              <h4>Kind of Blue</h4>
+              <div class="stars">★★★★★</div>
+              <div>Miles Davis • 1959</div>
+            </div>
+          </div>
+          <p class="review-text">
+            A timeless masterpiece that defined cool jazz. Miles Davis's trumpet
+            work is nothing short of revolutionary. Every track flows seamlessly
+            into the next, creating an atmosphere that's both sophisticated and
+            deeply emotional.
+          </p>
+          <div class="review-date">Reviewed on February 1, 2026</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== PESTAÑA: SOPORTE / CHAT ===== -->
+    <div id="chat" class="tab-content">
+      <div id="chat-area">
+        <div id="chat-messages">
+          <div class="msg msg-bot">
+            ¡Hola! Soy el soporte técnico de SoundRate.<br />¿En qué te puedo ayudar hoy?
+          </div>
+        </div>
+
+        <div class="quick-questions" id="quick-questions">
+          <button class="quick-btn" data-q="login">No puedo iniciar sesión o olvidé mi contraseña</button>
+          <button class="quick-btn" data-q="carga">La página no carga o se queda cargando</button>
+          <button class="quick-btn" data-q="perfil">Problemas con mi perfil (foto, nombre, email)</button>
+          <button class="quick-btn" data-q="error">Aparece un mensaje de error o algo no funciona</button>
+          <button class="quick-btn" data-q="borrar-cuenta">Quiero eliminar mi cuenta</button>
+          <button class="quick-btn" data-q="sugerencia">Tengo una sugerencia o quiero reportar un bug</button>
+          <button class="quick-btn" data-q="otro">Otro problema / consulta</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PESTAÑA: PAGO / PREMIUM ===== -->
+    <div id="payment" class="tab-content">
+      <section class="payment-section">
+
+        <!-- Encabezado del plan -->
+        <div class="payment-hero">
+          <div class="payment-badge">✦ PREMIUM</div>
+          <h2>SoundRate Premium</h2>
+          <p class="payment-subtitle">Desbloquea reviews ilimitadas, estadísticas avanzadas y sin anuncios.</p>
+          <div class="payment-price">
+            <span class="price-amount">$50.00</span>
+            <span class="price-period">/ año</span>
+          </div>
+        </div>
+
+        <!-- Beneficios -->
+        <ul class="payment-benefits">
+          <li>✔ Reviews y listas ilimitadas</li>
+          <li>✔ Estadísticas de escucha avanzadas</li>
+          <li>✔ Perfil con badge Premium</li>
+          <li>✔ Sin anuncios</li>
+          <li>✔ Acceso anticipado a nuevas funciones</li>
+        </ul>
+
+        <!-- Info de modo test -->
+        <div class="stripe-info-bar">
+          <span>🔑 Stripe:</span>
+          <code id="stripe-key-display">Cargando...</code>
+        </div>
+
+        <!-- Estado del pago -->
+        <div id="payment-status" class="payment-status" style="display:none;"></div>
+
+        <!-- Formulario de pago -->
+        <div class="payment-form-card">
+          <form id="payment-form">
+
+            <!-- Nombre del titular (visible solo en modo card-only) -->
+            <div class="card-field-group" id="cardholder-name-group" style="display:none;">
+              <label class="card-field-label">Nombre del titular</label>
+              <input
+                type="text"
+                id="cardholder-name"
+                class="card-field-input"
+                placeholder="Como aparece en la tarjeta"
+                autocomplete="cc-name"
+              />
+            </div>
+
+            <!-- Stripe monta aquí (CardElement o PaymentElement segun el modo) -->
+            <div id="stripe-card-wrapper" style="display:none;">
+              <label class="card-field-label" id="card-element-label">Datos de la tarjeta</label>
+              <div id="card-element" class="card-element-container"></div>
+              <p class="card-field-hint">🔒 Tus datos son procesados de forma segura por Stripe. Nunca los almacenamos.</p>
+            </div>
+
+            <button type="submit" id="submit-payment" class="btn-pay" disabled>
+              Pagar $50.00
+            </button>
+          </form>
+        </div>
+
+        <!-- Tabla de tarjetas de prueba -->
+        <div class="test-cards-section">
+          <h3 class="test-cards-title">🧪 Tarjetas de prueba de Stripe</h3>
+          <p class="test-cards-desc">Estas tarjetas no realizan cargos reales. Úsalas para probar distintos escenarios:</p>
+          <div class="test-cards-table-wrapper">
+            <table class="test-cards-table">
+              <thead>
+                <tr>
+                  <th>Número de tarjeta</th>
+                  <th>Vencimiento</th>
+                  <th>CVC</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody id="test-cards-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="payment.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
