@@ -1,7 +1,9 @@
 // ===== STRIPE PAYMENT =====
-// La Publishable Key se obtiene del servidor en runtime — no está hardcodeada aquí
-const BACKEND_URL  = "http://localhost:4242";
-const IS_LOCALHOST = ["localhost", "127.0.0.1"].includes(location.hostname);
+// La Publishable Key es pública por diseño de Stripe — es seguro tenerla aquí.
+// Solo la Secret Key debe mantenerse privada (en .env, nunca en el código).
+const STRIPE_PUBLISHABLE_KEY = "pk_test_51T9TAUCdA8vpL5CPo3vCGeOUDXjEg4EaRpLPb6d9qwuklkOJcwd8g2dOb2inyhPjbGSTJWPiOI9aDeo1T22Ek09D00c0UTwgo8";
+const BACKEND_URL             = "http://localhost:4242";
+const IS_LOCALHOST            = ["localhost", "127.0.0.1"].includes(location.hostname);
 
 const TEST_CARDS = [
   { number: "4242 4242 4242 4242", label: "✅ Pago exitoso"        },
@@ -40,26 +42,9 @@ async function initStripe() {
   try {
     await loadStripeJS();
 
-    // Obtener la publishable key del servidor (nunca hardcodeada en el JS)
-    let publishableKey = "";
-    if (IS_LOCALHOST) {
-      try {
-        const cfg = await fetch(`${BACKEND_URL}/config`);
-        const data = await cfg.json();
-        publishableKey = data.publishableKey;
-      } catch {
-        throw new Error("No se pudo contactar el servidor. ¿Está corriendo node server.js?");
-      }
-      if (!publishableKey || publishableKey.includes("PEGA_TU")) {
-        throw new Error("Agrega STRIPE_PUBLISHABLE_KEY en el archivo .env y reinicia el servidor.");
-      }
-    } else {
-      // Sin servidor: pedir la clave por prompt (solo para pruebas locales sin Node)
-      publishableKey = prompt("Pega tu Stripe Publishable Key (pk_test_...) para continuar:");
-      if (!publishableKey) throw new Error("Se necesita la Publishable Key para inicializar Stripe.");
-    }
-
-    stripeInstance = window.Stripe(publishableKey);
+    // La Publishable Key es segura en el frontend — Stripe la diseñó así.
+    // Solo la Secret Key debe estar en el servidor (.env).
+    stripeInstance = window.Stripe(STRIPE_PUBLISHABLE_KEY);
 
     if (IS_LOCALHOST) {
       await setupPaymentIntent();
